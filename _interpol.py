@@ -20,8 +20,8 @@ def Interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
         interpoltype (str): type of interpolation to be used
 
     Returns:
-        xkoords: the x koordinates of the potential
-        ykoords: the interpolates y koordinates for the potential
+        potential_data (array): containing the x coordinates and the corressponding
+        potential 
         or Error Msg if Typ is not linear, cspline or polynomial
     """
     #if interpoltype not == "linear", "polynomial", "cspline":
