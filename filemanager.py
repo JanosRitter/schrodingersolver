@@ -87,8 +87,27 @@ def _read_schrodinger2(inputfilepath):
 
 
 
-def filesaver(dirname, potentialpath, potential_data):
+def filesaver(dirname, potential_data, energie_data, wavefunc_data, expvalues_data):
     potentialpath = os.path.join(dirname, "potential.dat")
+    energiepath = os.path.join(dirname, "energie.dat")
+    wavefuncpath = os.path.join(dirname, "wavefunc.dat")
+    expvaluespath = os.path.join(dirname, "expvalues.dat")
     np.savetxt(potentialpath, potential_data)
+    np.savetxt(energiepath, energie_data)
+    np.savetxt(wavefuncpath, wavefunc_data)
+    np.savetxt(expvaluespath, expvalues_data)
+    
 
+
+def plotfilereader(dirname):
+    potentialpath = os.path.join(dirname, "potential.dat")
+    energiepath = os.path.join(dirname, "energie.dat")
+    wavefuncpath = os.path.join(dirname, "wavefunc.dat")
+    expvaluespath = os.path.join(dirname, "expvalues.dat")
+    potential_data = np.loadtxt(potentialpath)
+    energie_data = np.loadtxt(energiepath)
+    wavefunc_data = np.loadtxt(wavefuncpath)
+    expvalues_data = np.loadtxt(expvaluespath)
+    
+    return potential_data, energie_data, wavefunc_data, expvalues_data
 
