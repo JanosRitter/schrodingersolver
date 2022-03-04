@@ -51,6 +51,7 @@ def Interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
     x_potential = np.linspace(x_axis_data[0],x_axis_data[1],x_axis_data[2])
     y_potential = interpolfunc(x_potential)
     potential_data = np.transpose(np.vstack((x_potential, y_potential)))
+    
 
     return potential_data
 

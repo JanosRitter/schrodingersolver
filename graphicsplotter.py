@@ -24,12 +24,12 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
     plt.subplot(1,2,1)
 
     #plotting Potential:
-    plt.plot(potential_data[0], potential_data[1])
+    plt.plot(potential_data[:,0], potential_data[:,1])
     #plotting Wfuncs:
-    plt.plot(wavefunc_data[0], wavefunc_data[1] + energie_data)
+    plt.plot(wavefunc_data[:,0], wavefunc_data[:,1] + energie_data)
     #x_range:
     if x_bound is None:
-        plt.xlim(potential_data[0].min()*1.1, potential_data[0].max()*1.1)
+        plt.xlim(potential_data[:,0].min()*1.1, potential_data[:,0].max()*1.1)
     else:
         plt.xlim(-x_bound,x_bound)
     
@@ -37,12 +37,12 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
     plt.subplot(1,2,2)
 
     #plotting Potential:
-    plt.plot(potential_data[0], potential_data[1])
+    plt.plot(potential_data[:,0], potential_data[:,1])
     #plotting Wfuncs:
-    plt.plot(wavefunc_data[0], wavefunc_data[1] + energie_data)
+    plt.plot(wavefunc_data[:,0], wavefunc_data[:,1] + energie_data)
     #x_range:
     if x_bound is None:
-        plt.xlim(potential_data[0].min()*1.1, potential_data[0].max()*1.1)
+        plt.xlim(potential_data[:,0].min()*1.1, potential_data[:,0].max()*1.1)
     else:
         plt.xlim(-x_bound,x_bound)
         

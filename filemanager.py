@@ -58,11 +58,11 @@ def _read_schrodinger2(inputfilepath):
         nr_interpol_p, and interpol_xy_declarations (interpol_xy_declarations
         exist as an array and as a list only the array version is returned)
     """
+    
     schrodingerslist = [line.rstrip('\n') for line in open(inputfilepath, 'r')]
     
-   
-    mass1 = float(schrodingerslist[0].split()[0])
-    xmin = float(schrodingerslist[1].split(" ")[0])
+    mass = float(schrodingerslist[0].split()[0])
+    xmin = float(schrodingerslist[1].split()[0])
     xmax = float(schrodingerslist[1].split(" ")[1])
     npoint = int(schrodingerslist[1].split(" ")[2])
     x_axis_data = (xmin, xmax, npoint)
@@ -76,14 +76,12 @@ def _read_schrodinger2(inputfilepath):
     array_xy_dec = np.array(list_xy_dec)
     interpolxydeclarations = array_xy_dec.astype(np.float)
     
-    return mass1, xmin, xmax, npoint, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations
+    return mass, xmin, xmax, npoint, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations
     
 
 
 
 
-
-#print(_read_schrodinger2("schrodinger.inp"))
 
 
 
