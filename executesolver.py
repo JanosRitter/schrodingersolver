@@ -59,13 +59,13 @@ def schrodingers_solver(dirname):
     else:
         potential_data = Interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
         
-        energie_data, wavefunc_data, expvalues_data = solver(mass, potential_data, select_range=None)
+        energie_data_slice, wavefunc_data_slice, expvalues_data = solver(mass, potential_data, first_ev, last_ev, select_range=None)
         
-        filesaver(dirname, potential_data, energie_data, wavefunc_data, expvalues_data)
+        filesaver(dirname, potential_data, energie_data_slice, wavefunc_data_slice, expvalues_data)
         
-        plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_data, x_bound=None)
+        plotting(dirname, potential_data, energie_data_slice, wavefunc_data_slice, expvalues_data, x_bound=None)
         print(potential_data)
-        print(energie_data, wavefunc_data, expvalues_data)
+        print(energie_data_slice, wavefunc_data_slice, expvalues_data)
         
 print(schrodingers_solver(""))
         
