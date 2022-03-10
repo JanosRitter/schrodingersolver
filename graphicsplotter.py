@@ -20,21 +20,23 @@ import os
 def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_data, x_bound=None):
 
 
-    plt.figure(figsize=(15, 7.5), dpi=80)
+    plt.figure(figsize=(10, 8), dpi=80)
     plt.subplot(1,2,1)
 
     #plotting Potential:
     plt.plot(potential_data[:,0], potential_data[:,1])
+    for ii in range(len(energie_data)):
+        plt.axhline(y = energie_data[ii], xmin=potential_data[0][0], xmax=potential_data[-1][0], color = 'silver')
     #plotting Wfuncs:
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,1] + energie_data[0])
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,2] + energie_data[1])
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,3] + energie_data[2])
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,4] + energie_data[3])
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,5] + energie_data[4])
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,6] + energie_data[5])
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,7] + energie_data[6])
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,8] + energie_data[7])
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,9] + energie_data[8])
+    skaling = 0.5
+    for num in range(wavefunc_data.shape[1]-1):
+       color = "blue" if num % 2 else "red" 
+       plt.plot(wavefunc_data[:,0], wavefunc_data[:,num+1] * skaling + energie_data[num], color = color)
+       
+    plt.scatter(expvalues_data, energie_data, marker = 'x')
+    plt.xlabel("x [Bohr]", size=16)
+    plt.ylabel("Energie [Hartree]", size=16)
+    
     
     #x_range:
     if x_bound is None:
