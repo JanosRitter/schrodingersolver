@@ -33,7 +33,7 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
        color = "blue" if num % 2 else "red" 
        plt.plot(wavefunc_data[:,0], wavefunc_data[:,num+1] * skaling + energie_data[num], color = color)
        
-    plt.scatter(expvalues_data, energie_data, marker = 'x')
+    plt.scatter(expvalues_data[:,0], energie_data, marker = 'x')
     plt.xlabel("x [Bohr]", size=16)
     plt.ylabel("Energie [Hartree]", size=16)
     
@@ -44,18 +44,24 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
     else:
         plt.xlim(-x_bound,x_bound)
     
+    plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) * 1.2)
+    
 
     plt.subplot(1,2,2)
 
     #plotting Potential:
-    plt.plot(potential_data[:,0], potential_data[:,1])
-    #plotting Wfuncs:
-    plt.plot(wavefunc_data[:,0], wavefunc_data[:,1])
+    plt.scatter(expvalues_data[:,1], energie_data, marker = 'x')
+    for ii in range(len(energie_data)):
+        plt.axhline(y = energie_data[ii], xmin=potential_data[0][0], xmax=potential_data[-1][0], color = 'silver')
+    
     #x_range:
     if x_bound is None:
-        plt.xlim(potential_data[:,0].min()*1.1, potential_data[:,0].max()*1.1)
+        plt.xlim(0, expvalues_data[:,1].max()*1.1)
     else:
         plt.xlim(-x_bound,x_bound)
+    
+    plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) * 1.2)
+    plt.xlabel("[Bohr]", size=16)
         
     filename = os.path.join(dirname, "plots")
     

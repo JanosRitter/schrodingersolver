@@ -30,13 +30,47 @@ def solver(mass, potential_data, first_ev = 1, last_ev = 10, select_range=None):
     
         
 # Berechnung von Erwartungswerten
-    expvalues_data = np.array([])
+    expvalues = np.array([])
     for wfunc in wavefunc_data_slice.T:
-        expvalues_data = np.append(expvalues_data,
+        expvalues = np.append(expvalues,
                               [delta * np.sum(wfunc ** 2 * potential_data[:,0])],
                               axis=0)
+    
+    """
+    Calculates the uncertainity :math:`\\Delta x` defined as
+
+    .. math::
+
+       \\Delta x = \\sqrt{<x^2> - <x>^2}
+
+    for each wavefunction.
+
+    Args:
+        xcoords (1darray): Array containing the x-coordinates
+        wfuncs (ndarray): Array containing the wave functions that
+            correspond to the x-coordinates
+        xmin: Minimum Value for x
+        xmax: Maximum Value for x
+        npoints: Number of x values in range (xmin, xmax)
+    Returns:
+        uncertainty (1darray): The uncertainity of the x-coordinate.
+
+    """
+#calculating uncertainty
+    uncertainty = np.array([])
+
+    for wfunc, expv in zip(wavefunc_data, expvalues):
+        expvalsq = np.sum((wfunc ** 2) * (potential_data[:,0] ** 2)) * delta
+        uncertainty = np.append(uncertainty, [np.sqrt(expvalsq - expv ** 2)],
+                                axis=0)
+    
+    expvalues_array = np.array([expvalues])
+    uncertainty_array = np.array([uncertainty])
+    
+    
+    expvalues_data = np.concatenate((expvalues_array.T, uncertainty_array.T), axis = 1)
    
-    return energie_data_slice, pot_wavefunc_data, expvalues_data
+    return energie_data_slice, pot_wavefunc_data, expvalues_data,
 
 
 
