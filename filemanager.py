@@ -46,7 +46,8 @@ def _read_schrodinger(inputfilepath):
 
 
 def _read_schrodinger2(inputfilepath):
-    """Reads the input file "schrodinger.inp" that has the user
+    """
+    Reads the input file "schrodinger.inp" that has the user
     defined data which describes the problem
 
     Argument:
@@ -76,7 +77,7 @@ def _read_schrodinger2(inputfilepath):
     array_xy_dec = np.array(list_xy_dec)
     interpolxydeclarations = array_xy_dec.astype(np.float)
     
-    return mass, xmin, xmax, npoint, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations
+    return mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations
     
 
 
@@ -86,6 +87,19 @@ def _read_schrodinger2(inputfilepath):
 
 
 def filesaver(dirname, potential_data, energie_data, wavefunc_data, expvalues_data):
+    """
+    Saves the calculated data in .dat files 
+    Args:
+        dirname (str): The directory name for the data that is meant to be safed
+        potential_data (2darray): An array containing the linspaced x-coordinates and the given potential
+        energie_data (1darray): An array containing the eigenvalues of the given problem 
+        wavefunc_data (ndarray): An array where each of the n columns contains the normalized wavefunction of the corresponding
+                                eignvalue
+        expvalues_data (2darray): An array containing the expected values of the position operator in the first column and the
+                                uncertainty of the position operator
+    Returns:
+        .dat files in given directory
+    """
     potentialpath = os.path.join(dirname, "potential.dat")
     energiepath = os.path.join(dirname, "energie.dat")
     wavefuncpath = os.path.join(dirname, "wavefunc.dat")

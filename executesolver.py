@@ -51,8 +51,8 @@ def schrodingers_solver(dirname):
     """
     #"~/Pythonzeug/Spyderzeug/schrodingersolver"
     try:
-        mass, xmin, xmax, npoint, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations = _read_schrodinger2(os.path.join(dirname, "schrodinger.inp"))
-        print("Werte", mass, xmin, xmax, npoint, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations)
+        mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations = _read_schrodinger2(os.path.join(dirname, "schrodinger.inp"))
+        print("Werte", mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations)
     except FileNotFoundError:
         msg = "Input file or path was not found."
         print(msg)
