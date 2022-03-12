@@ -24,18 +24,7 @@ def Interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
         potential 
         or Error Msg if Typ is not linear, cspline or polynomial
     """
-    #if interpoltype not == "linear", "polynomial", "cspline":
-        #print("unvalid type, please enter either linear,"
-              #"polynomial or cspline the default cspline will be used")
-
-    #Xmin = float("".join(xMin))
-    #Xmin = float("".join(xMax))
-    #Npoint = float("".join(nPoint))
-# converted list into string into float, because linspace wont work otherwise
-    #xkoords = np.linspace(Xmin, Xmax, Npoint)
-
-    #Xpot = [float(ii) for ii in xPot]
-    #Ypot = [float(ii) for ii in yPot]
+   
 
     if interpoltype == "linear":
         interpolfunc = scipy.interpolate.interp1d(interpolxydeclarations[:,0], interpolxydeclarations[:,1])
@@ -56,5 +45,3 @@ def Interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
     return potential_data
 
 
-print(Interpolation(np.array([[-20.,  35.],[-10.,   0.],[  0.,   2.],[ 10.,   0.],[ 20.,  35.]]),
-(-20.0, 20.0, 1999),'cspline'))
