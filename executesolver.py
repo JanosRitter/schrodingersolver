@@ -15,8 +15,8 @@ equation and graphicate the results
 import os
 import numpy as np
 import sys, getopt
-from moduls.filemanager import _read_schrodinger2, filesaver, plotfilereader
-from moduls._interpol import Interpolation
+from moduls.filemanager import _read_schrodinger, filesaver, plotfilereader
+from moduls._interpol import interpolation
 from moduls.solver import solver, calculate_expvalues
 from moduls.graphicsplotter import plotting
 
@@ -58,13 +58,13 @@ def schrodinger_solver(dirname):
     """
     
     try:
-        mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations = _read_schrodinger2(os.path.join(dirname, "schrodinger.inp"))
+        mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations = _read_schrodinger(os.path.join(dirname, "schrodinger.inp"))
         #print("Werte", mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations)
     except FileNotFoundError:
         msg = "Input file or path was not found."
         print(msg)
     else:
-        potential_data = Interpolation(interpolxydeclarations, x_axis_data, interpoltype = interpoltype)
+        potential_data = interpolation(interpolxydeclarations, x_axis_data, interpoltype = interpoltype)
         
         energie_data_slice, wavefunc_data, wavefunc_data_slice = solver(mass, potential_data, first_ev, last_ev, select_range=None)
         
