@@ -14,13 +14,13 @@ equation and graphicate the results
 
 import os
 import numpy as np
-from filemanager import _read_schrodinger2, filesaver, plotfilereader
-from _interpol import Interpolation
-from solver import solver
-from graphicsplotter import plotting
+from moduls.filemanager import _read_schrodinger2, filesaver, plotfilereader
+from moduls._interpol import Interpolation
+from moduls.solver import solver, calculate_expvalues
+from moduls.graphicsplotter import plotting
 
 
-def schrodingers_solver(dirname):
+def schrodinger_solver(dirname):
     """
     Solves the 1D Schrodinger's time-independent equation
     for any type of potential and graphicates its solution. The
@@ -41,12 +41,18 @@ def schrodingers_solver(dirname):
 
     Example:
         2.0 # mass
-        -2.0 2.0 1999 # xMin xMax nPoint
-        1 5 # first and last eigenvalue to print
+        -20.0 20.0 1999 # xMin xMax nPoint
+        1 16 # first and last eigenvalue to include in the output
         linear # interpolation type
-        2 # nr. of interpolation points and xy declarations
-        -2.0 0.0
-        2.0 0.0
+        8 # nr. of interpolation points and xy declarations
+        -20.0 100.0
+        -8.0 -1.5
+        -7.0 -1.5
+        -0.5 1.8
+        0.5 1.8
+        7.0 -1.5
+        8.0 -1.5
+        20.0 100.0
 
     """
     #"~/Pythonzeug/Spyderzeug/schrodingersolver"
@@ -59,7 +65,9 @@ def schrodingers_solver(dirname):
     else:
         potential_data = Interpolation(interpolxydeclarations, x_axis_data, interpoltype = interpoltype)
         
-        energie_data_slice, wavefunc_data, expvalues_data = solver(mass, potential_data, first_ev, last_ev, select_range=None)
+        energie_data_slice, wavefunc_data, wavefunc_data_slice = solver(mass, potential_data, first_ev, last_ev, select_range=None)
+        
+        expvalues_data = calculate_expvalues(potential_data, wavefunc_data_slice)
         
         filesaver(dirname, potential_data, energie_data_slice, wavefunc_data, expvalues_data)
         
@@ -67,5 +75,5 @@ def schrodingers_solver(dirname):
         print(potential_data)
         print(energie_data_slice, wavefunc_data, expvalues_data)
         
-print(schrodingers_solver(""))
+print(schrodinger_solver(""))
         
