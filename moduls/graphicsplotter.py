@@ -1,6 +1,8 @@
+"""System modules"""
+import os
 from matplotlib import pyplot as plt
 import numpy as np
-import os
+
 
 
 def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_data):

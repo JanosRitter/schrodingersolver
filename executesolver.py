@@ -1,21 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Mar  4 16:02:58 2022
-
-@author: janos
-"""
 """
 This is an executable script that uses the modules _fileio,
 _interpolation, graphics, and solvers to solve the Schrodingers
 equation and graphicate the results
 """
-
-
 import os
-import numpy as np
 import sys, getopt
-from moduls.filemanager import _read_schrodinger, filesaver, plotfilereader
+from moduls.filemanager import _read_schrodinger, filesaver
 from moduls._interpol import interpolation
 from moduls.solver import solver, calculate_expvalues
 from moduls.graphicsplotter import plotting
@@ -56,34 +46,33 @@ def schrodinger_solver(dirname):
         20.0 100.0
 
     """
-    
+
     try:
-        mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations = _read_schrodinger(os.path.join(dirname, "schrodinger.inp"))
-        #print("Werte", mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations)
+        mass, x_axis_data, first_ev, last_ev, ipoltype, interpolxydeclarations = _read_schrodinger(os.path.join(dirname, "schrodinger.inp"))
+
     except FileNotFoundError:
         msg = "Input file or path was not found."
         print(msg)
     else:
-        potential_data = interpolation(interpolxydeclarations, x_axis_data, interpoltype = interpoltype)
-        
-        energie_data_slice, wavefunc_data, wavefunc_data_slice = solver(mass, potential_data, first_ev, last_ev, select_range=None)
-        
+        potential_data = interpolation(interpolxydeclarations, x_axis_data, interpoltype = ipoltype)
+
+        energie_data_slice, wavefunc_data, wavefunc_data_slice = solver(mass, potential_data, first_ev, last_ev)
+
         expvalues_data = calculate_expvalues(potential_data, wavefunc_data_slice)
-        
+
         filesaver(dirname, potential_data, energie_data_slice, wavefunc_data, expvalues_data)
-        
+
         plotting(dirname, potential_data, energie_data_slice, wavefunc_data, expvalues_data)
-        #print(potential_data)
-        #print(energie_data_slice, wavefunc_data, expvalues_data)
-        
 
 
 
-    
-    
-    
+
+
 def parsecommand(argv):
-    
+    """
+    Function used to parse commands from the command line into executesolver.py
+    """
+
     dirname = ""
     factor = 0.5
     try:
@@ -94,44 +83,18 @@ def parsecommand(argv):
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-           print('Help')
-           sys.exit()
+            print('Help')
+            sys.exit()
         elif opt in ("-i", "--ifile"):
             dirname = arg
         elif opt in ("-f", "--factor"):
             factor = arg
-    
+
     return dirname, factor
-           
-    
-    
-    
+
+
+
 
 if __name__ == "__main__":
     dirname, factor = parsecommand(sys.argv[1:])
-    schrodinger_solver(dirname)   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
+    schrodinger_solver(dirname)

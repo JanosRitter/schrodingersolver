@@ -36,7 +36,7 @@ def _read_schrodinger(inputfilepath):
     array_xy_dec = np.array(list_xy_dec)
     interpolxydeclarations = array_xy_dec.astype(np.float)
 
-    return mass, x_axis_data, first_ev, last_ev, interpoltype, nr_interpol_p, interpolxydeclarations
+    return mass, x_axis_data, first_ev, last_ev, interpoltype, interpolxydeclarations
 
 
 
