@@ -6,7 +6,7 @@ equation and graphicate the results
 import os
 import sys, getopt
 from moduls.filemanager import _read_schrodinger, filesaver
-from moduls._interpol import interpolation
+from moduls.interpolation import interpolation
 from moduls.solver import solver, calculate_expvalues
 from moduls.graphicsplotter import plotting
 

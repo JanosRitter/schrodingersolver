@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """
 Created on Wed Jan  5 18:55:28 2022
 
@@ -14,7 +12,7 @@ def interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
 
     Args:
         interpolxydeclarations (array): Contains data points of the potential
-        x_axis_data (list?): Contains the start and the end of the x-axis
+        x_axis_data (list): Contains the start and the end of the x-axis
         and the number of points
         interpoltype (str): type of interpolation to be used
 
@@ -36,6 +34,8 @@ def interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
     else:
         print("unvalid type, please enter either linear,"
               "polynomial or cspline the default cspline will be used")
+        interpolfunc = KroghInterpolator(interpolxydeclarations[:,0], interpolxydeclarations[:,1])
+
     x_potential = np.linspace(x_axis_data[0],x_axis_data[1],x_axis_data[2])
     y_potential = interpolfunc(x_potential)
     potential_data = np.transpose(np.vstack((x_potential, y_potential)))
