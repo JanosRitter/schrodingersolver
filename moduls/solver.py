@@ -51,7 +51,7 @@ def calculate_expvalues(potential_data, wavefunc_data_slice):
     expvalues = np.array([])
     for wfunc in wavefunc_data_slice.T:
         expvalues = np.append(expvalues,
-                              [delta * np.sum(wfunc ** 2 * potential_data[:,0])],
+                              [delta * np.sum((wfunc ** 2) * potential_data[:,0])],
                               axis=0)
 
     uncertainty = np.array([])

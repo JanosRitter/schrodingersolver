@@ -55,7 +55,7 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
 
 
     if np.amax(energie_data) > 0:
-        plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) * 1.2)
+        plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) * 1.2 + 1)
     else:
         plt.ylim(np.amin(potential_data[:,1]) * 1.1, 0)
 
@@ -78,7 +78,7 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
     plt.xlim(0, expvalues_data[:,1].max()*1.1)
 
 
-    plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) * 1.2)
+    plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) * 1.2 + 1)
 
     plt.xlabel("[Bohr]", size=16)
 

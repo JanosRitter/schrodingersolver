@@ -48,7 +48,8 @@ def schrodinger_solver(dirname):
     """
 
     try:
-        mass, x_axis_data, first_ev, last_ev, ipoltype, interpolxydeclarations = _read_schrodinger(os.path.join(dirname, "schrodinger.inp"))
+        input_path = os.path.join(dirname, "schrodinger.inp")
+        mass, x_axis_data, first_ev, last_ev, ipoltype, interpolxydeclarations = _read_schrodinger(input_path)
 
     except FileNotFoundError:
         msg = "Input file or path was not found."

@@ -27,10 +27,11 @@ def interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
         interpolfunc = interp1d(interpolxydeclarations[:,0], interpolxydeclarations[:,1])
 
     elif interpoltype == "polynomial":
-        interpolfunc = CubicSpline(interpolxydeclarations[:,0], interpolxydeclarations[:,1])
+        interpolfunc = KroghInterpolator(interpolxydeclarations[:,0], interpolxydeclarations[:,1])
 
     elif interpoltype == "cspline":
-        interpolfunc = KroghInterpolator(interpolxydeclarations[:,0], interpolxydeclarations[:,1])
+        interpolfunc = CubicSpline(interpolxydeclarations[:,0], interpolxydeclarations[:,1])
+        
     else:
         print("unvalid type, please enter either linear,"
               "polynomial or cspline the default cspline will be used")
