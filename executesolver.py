@@ -11,7 +11,7 @@ from moduls.solver import solver, calculate_expvalues
 from moduls.graphicsplotter import plotting
 
 
-def schrodinger_solver(dirname):
+def schrodinger_solver(dirname, factor):
     """
     Solves the 1D Schrodinger's time-independent equation
     for any type of potential and graphicates its solution. The
@@ -63,7 +63,7 @@ def schrodinger_solver(dirname):
 
         filesaver(dirname, potential_data, energie_data_slice, wavefunc_data, expvalues_data)
 
-        plotting(dirname, potential_data, energie_data_slice, wavefunc_data, expvalues_data)
+        plotting(dirname, potential_data, energie_data_slice, wavefunc_data, expvalues_data, factor)
 
 
 
@@ -98,4 +98,4 @@ def parsecommand(argv):
 
 if __name__ == "__main__":
     dirname, factor = parsecommand(sys.argv[1:])
-    schrodinger_solver(dirname)
+    schrodinger_solver(dirname, factor)

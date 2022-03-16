@@ -56,7 +56,7 @@ Usage:
     
     Execution: After the input has been provided. The solver can be executed by 
     typing "python3 executesolver.py" into the console of your system while 
-    additionaly providing the input path after using -i for the cammandline 
+    additionaly providing the input path after using -i for the command line 
     parsing
     
         Example:
@@ -65,6 +65,18 @@ Usage:
     An error message appears if the input path was not found. There is no 
     message for succesful execution.
     
+    There is also the possibility to provide a skaling factor for the amplitude
+    of the wavefunction within the command line. Typing -f followed by the 
+    factor. 
+        
+        Example:
+            python3 executesolver.py -i InputOutput/Test1 -f 0.5
+            
+    The default value of this factor is set to 0.5 so it is not necessary to 
+    provide a skaling factor. The factor can be used for the creation of nicer 
+    looking plots. Depending on the potential, the amplitude of a normalized 
+    wavefunction
+        
     Output: The results are stored in .dat files. 
     The files contain:
         potential.dat: An interpolation of the provided potential. The kind and
@@ -76,7 +88,7 @@ Usage:
         
         wavefunc.dat: The first column contains the linear spaced x-axis data
         That can be controlled in line 2 of the input file. The other columns 
-        each contain a normalizedwavefunction solving the schrodinger equation. 
+        each contain a normalized wavefunction solving the schrodinger equation. 
         The wavefunctions and the number of wavefunctions correspond to the 
         eigenvalues in energie.dat. 
         
@@ -151,7 +163,7 @@ installation.
     filemanger. test_interpolation is testing the shape of the interpolation output
     for different npoints and the interpolation for an easy example. test_solver
     is testing the solver function and compares energie eigenvalues, expavalues 
-    and uncertaintys.
+    and uncertaintys to the values of the "test_data/" directory.
     
 
 

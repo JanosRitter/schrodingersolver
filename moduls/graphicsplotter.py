@@ -5,7 +5,7 @@ import numpy as np
 
 
 
-def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_data):
+def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_data, factor):
     """
     This function is used to visualize the calculated data. The data is
     visualized in two subplots the left subplot contains the potential_data,
@@ -35,7 +35,6 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
     plt.figure(figsize=(10, 8), dpi=80)
     plt.subplot(1,2,1)
 
-    skaling = 0.5
 
     plt.plot(potential_data[:,0], potential_data[:,1])
 
@@ -46,7 +45,8 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
 
     for i in range(wavefunc_data.shape[1]-1):
         color = "blue" if i % 2 else "red"
-        plt.plot(wavefunc_data[:,0], wavefunc_data[:,i+1] * skaling + energie_data[i], color=color)
+        ff = float(factor)
+        plt.plot(wavefunc_data[:,0], wavefunc_data[:,i+1] * ff + energie_data[i], color=color)
 
     plt.scatter(expvalues_data[:,0], energie_data, marker = 'x')
 
@@ -55,9 +55,9 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
 
 
     if np.amax(energie_data) > 0:
-        plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) * 1.2 + 1)
+        plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) + 0.5)
     else:
-        plt.ylim(np.amin(potential_data[:,1]) * 1.1, 0)
+        plt.ylim(np.amin(potential_data[:,1]) * 1.1, 1)
 
 
     plt.xlabel("x [Bohr]", size=16)
@@ -78,7 +78,7 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
     plt.xlim(0, expvalues_data[:,1].max()*1.1)
 
 
-    plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) * 1.2 + 1)
+    plt.ylim(np.amin(potential_data[:,1]) * 1.1, np.amax(energie_data) + 0.5)
 
     plt.xlabel("[Bohr]", size=16)
 
