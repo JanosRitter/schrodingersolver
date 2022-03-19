@@ -21,7 +21,7 @@ Installation:
 The package can be installed by installing a tar archiv of the package or it
 can be downloaded under 
 
-https://github.com/JanosRitter
+https://github.com/JanosRitter/schrodingersolver
 
 
 Requirements:
