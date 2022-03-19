@@ -1,6 +1,10 @@
 Schrodingersolver is python package used to numericaly solve the 1D schrodinger 
 equation for a given potential.
 
+Developers:
+Janos Ritter: https://github.com/JanosRitter
+Merlin Böschen
+
 Disclaimer:
 This is a student project using very basic numerical algorithms. It might not
 be 100% reliable
@@ -13,7 +17,14 @@ for a potential defined in the input file. The results are returned in .dat
 files and are visualized in a file plot.png.
 
 
-Requierments:
+Installation:
+The package can be installed by installing a tar archiv of the package or it
+can be downloaded under 
+
+https://github.com/JanosRitter
+
+
+Requirements:
 This package was developt in spyder version 4.2.1 and written in Python version 3.8.
 The used distribution was ubuntu 20.04. The package is using the python 
 packages numpy version 1.22.0 and scipy version 1.7.3.
@@ -53,6 +64,10 @@ Usage:
             7.0 -1.5
             8.0 -1.5
             20.0 100.0
+            
+    Two schrodinger.inp files a included with in the package. The first one
+    is in the main directory and an additional input is inside an example
+    directory "InputOutput/ExampleIO".
     
     Execution: After the input has been provided. The solver can be executed by 
     typing "python3 executesolver.py" into the console of your system while 
@@ -164,6 +179,12 @@ installation.
     for different npoints and the interpolation for an easy example. test_solver
     is testing the solver function and compares energie eigenvalues, expavalues 
     and uncertaintys to the values of the "test_data/" directory.
+    
+    
+Credits:
+Provided test data:
+    Keno Krieger: https://github.com/kenokrieger
+    Helmut Wecke:
     
 
 

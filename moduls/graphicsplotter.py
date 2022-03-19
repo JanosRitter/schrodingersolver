@@ -85,6 +85,6 @@ def plotting(dirname, potential_data, energie_data, wavefunc_data, expvalues_dat
 
 
 
-    filename = os.path.join(dirname, "plots")
+    filename = os.path.join(dirname, "plots.pdf")
 
     plt.savefig(filename)

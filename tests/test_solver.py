@@ -1,5 +1,5 @@
 """Contains tests for the private _solvers module"""
-from numpy import insert, loadtxt, allclose
+from numpy import loadtxt, allclose
 import pytest
 from moduls.filemanager import _read_schrodinger
 from moduls.interpolation import interpolation
@@ -59,5 +59,6 @@ def test_wavefunc(sampleinput):
     ref_expvalues = calculate_expvalues(potential_data, ref_wf_slice)
 
     #assert allclose(ref_energies, cal_energies, atol = 0.01)
-    assert allclose(ref_expvalues[:,0], cal_expvalues[:,0], atol = 0.001)
+    assert allclose(ref_expvalues, cal_expvalues, atol = 0.0001)
+    assert allclose(ref_expvalues, cal_expvalues, rtol = 0.001)
 

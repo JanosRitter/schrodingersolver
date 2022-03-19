@@ -31,7 +31,7 @@ def interpolation(interpolxydeclarations, x_axis_data, interpoltype = 'cspline')
 
     elif interpoltype == "cspline":
         interpolfunc = CubicSpline(interpolxydeclarations[:,0], interpolxydeclarations[:,1])
-        
+
     else:
         print("unvalid type, please enter either linear,"
               "polynomial or cspline the default cspline will be used")

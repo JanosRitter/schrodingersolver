@@ -29,12 +29,11 @@ def _read_schrodinger(inputfilepath):
     first_ev = int(schrodingerslist[2].split()[0])
     last_ev = int(schrodingerslist[2].split()[1])
     interpoltype = schrodingerslist[3].split()[0]
-    nr_interpol_p = int(schrodingerslist[4].split()[0])
     list_xy_dec = []
     for ii in range(5, len(schrodingerslist)):
         list_xy_dec.append(list(schrodingerslist[ii].split()))
     array_xy_dec = np.array(list_xy_dec)
-    interpolxydeclarations = array_xy_dec.astype(np.float)
+    interpolxydeclarations = array_xy_dec.astype(float)
 
     return mass, x_axis_data, first_ev, last_ev, interpoltype, interpolxydeclarations
 

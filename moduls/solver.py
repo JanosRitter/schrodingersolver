@@ -3,8 +3,25 @@ import numpy as np
 from scipy.linalg import eigh_tridiagonal
 
 def solver(mass, potential_data, first_ev = 1, last_ev = 10):
-    """Soll die vorhin ausgegebenen Daten in die benötigten Werte umrechnen
+    """
+    Solver function to calculate energie eigenvalues and the wavefunctions
+    for the schrodinger euqation.
 
+    Args:
+        mass (int): Mass of the particel within the potential
+        potential_data (2darray): An array containing a linspaced x axis in the
+        first column and the potential data in the second column.
+        first_ev (int): First egenvalue, that has to be calculated
+        last_ev (int): Last eigenvalue, that has to be calculated
+
+    Returns:
+        energie_data_slice (1darray): An array containing the energie eigenvalues
+        in increasing order. The length correponds to the first and last eigenvalue
+        pot_wavefunc_data (ndarray): An array containing the x axis data in the
+        first column and a normalized wavefunction in the other columns. The number
+        of wavefunctions corresponds to the first and last eigenvalue.
+        wavefunc_data_slice (ndarray): An array that only contains a normalized
+        wavefunction in each column.
     """
     delta = np.abs(potential_data[0][0]-potential_data[-1][0])/len(potential_data[:,0])
     alpha = 1 / (mass * delta ** 2)
