@@ -7,7 +7,7 @@ Merlin Böschen
 
 Disclaimer:
 This is a student project using very basic numerical algorithms. It might not
-be 100% reliable
+be 100% reliable.
 
 
 Description:
@@ -71,7 +71,9 @@ Usage:
             
     Two schrodinger.inp files a included with in the package. The first one
     is in the main directory and an additional input is inside an example
-    directory "InputOutput/ExampleIO".
+    directory "InputOutput/ExampleIO". The unit tests are containing input 
+    files aswell. Those can be used as additional samples and can provide some
+    inspiration for possible potetials.
     
     Execution: After the input has been provided. The solver can be executed by 
     typing "python3 executesolver.py" into the console of your system while 
