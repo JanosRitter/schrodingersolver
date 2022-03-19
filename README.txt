@@ -39,8 +39,12 @@ Usage:
     Input: The input file has to be provided by the user. It is recommended to
     create a new directory with in the "InputOutput/" directory, named after the
     problem (Example: Test1 or HarmOszillator...). The input file is placed 
-    inside the directory and HAS TO BE NAMED "schrodinger.inp".
-    
+    inside the directory and HAS TO BE NAMED "schrodinger.inp". The input file 
+    should contain a potential somewhat close that is some what close to zero.
+    Most input samples cover an x Range of around 10 bohr radians and the 
+    depth of the potential should not be greater than a few hartree. Really low
+    or high values could screw up the visualization of the data.
+        
         The input file has to cantain the following data:
         (float) # mass
         (float) (float) (int) # xMin xMax nPoint
